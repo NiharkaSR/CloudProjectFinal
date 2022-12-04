@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>{{ title }}</title>
+  <style>
+	.eachchart{
+display:inline;
+float:left;
+ box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  border-radius: 2px;
+  margin: 30px 20px 20px 10px;
+  width: calc(45% - 40px);
+  padding: 10px;
+  text-align: center;
+  float: left;
+}
+@media (max-width: 768px) {
+  .card {
+    margin: 10px 20px;
+    width: calc(100% - 40px);
+  }
+  .card:first-child {
+    margin-top: 20px;
+  }
+}
+
+body {
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    background: white;
+}
+.headings{
+font-size:20px
+color:antiquewhite
+}
+#home{
+	box-sizing: border-box;
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+    color: black;
+    text-align: center;
+    transition: all 1s;
+}
+  </style>
+</head>
+
+
+<body>
+     <div><a id="home" style='color:black' href="{{url_for('home')}}">Home</a></div>
+     <div><a style='color:black' href="{{url_for('loginPage')}}">Sign Off</a></div>
+<div class='eachchart'>
+<h1 class='headings'>{{title}}</h1>
+  <canvas id="myChart"></canvas>
+ </div>
+ 
+ <div class='eachchart'>
+ <h1 class='headings'>{{titletwo}}</h1>
+  <canvas id="myChartTwo"></canvas>
+ </div>
+
+ <div class='eachchart'>
+ <h1 class='headings'>{{titlethree}}</h1>
+  <canvas id="myChartThree"></canvas>
+ </div>
+ 
+ <div class='eachchart'>
+ <h1 class='headings'>{{titlefour}}</h1>
+  <canvas id="myChartFour"></canvas>
+ </div>
+ 
+ </body>
+ 
+<head>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  
+const datatwo = {
+  labels : [
+          {% for item in labelstwo %}
+           "{{ item }}",
+          {% endfor %}
+		],
+  datasets: [{
+    type: 'bar',
+    label: 'Organic',
+    data: [
+            {% for item in valuestwo %}
+               "{{ item }}",
+              {% endfor %}
+	    ],
+    borderColor: '#001f3f',
+    backgroundColor: '#001f3f'
+  }, {
+    type: 'bar',
+    label: 'Non-Organic',
+    data: [
+            {% for item in valuestwotwo %}
+               "{{ item }}",
+              {% endfor %}
+	    ],
+    backgroundColor: '#39CCCC',
+  }]
+};
+const ctx = document.getElementById('myChartTwo');
+  let chart = new Chart(ctx, {
+    type: 'line',
+    data: datatwo
+});	
+
+
+const data = {
+  labels : [
+          {% for item in labels %}
+           "{{ item }}",
+          {% endfor %}
+		],
+  datasets: [{
+    label: 'Colors',
+    type:'pie',
+    data: [
+            {% for item in values %}
+               "{{ item }}",
+              {% endfor %}
+	    ],
+    backgroundColor: ["#39CCCC","#001f3f"],
+    borderColor: '#001f3f'
+  }]
+};
+const ctxnew=document.getElementById('myChart');
+let chartnew = new Chart(ctxnew, {
+    type: 'pie',
+    data: data
+});
+
+
+const datathree = {
+  labels : [
+          {% for item in labelsthree %}
+           "{{ item }}",
+          {% endfor %}
+		],
+  datasets: [{
+    type: 'line',
+    label: 'SPENT(COMMODITY-FOOD)',
+    data: [
+            {% for item in valuesthree %}
+               "{{ item }}",
+              {% endfor %}
+	    ],
+    borderColor: '#001f3f',
+    backgroundColor: '#001f3f'
+  }]
+};
+const ctxnewthree=document.getElementById('myChartThree');
+let chartnewthree = new Chart(ctxnewthree, {
+    type: 'line',
+    data: datathree
+});
+
+
+const datafour = {
+  labels : [
+          {% for item in labelsfour %}
+           "{{ item }}",
+          {% endfor %}
+		],
+  datasets: [{
+    type: 'bar',
+    label: 'Single',
+    data: [
+            {% for item in valuesfour %}
+               "{{ item }}",
+              {% endfor %}
+	    ],
+    borderColor: '#001f3f',
+    backgroundColor: '#001f3f'
+  }, {
+    type: 'bar',
+    label: 'Married',
+    data: [
+            {% for item in valuestwofour %}
+               "{{ item }}",
+              {% endfor %}
+	    ],
+    backgroundColor: '#39CCCC',
+  }]
+};
+const ctxnewfour=document.getElementById('myChartFour');
+let chartnewfour = new Chart(ctxnewfour, {
+    type: 'line',
+    data: datafour
+});
+
+</script>
+</head>
+

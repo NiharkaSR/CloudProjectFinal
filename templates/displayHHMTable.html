@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<title>Final Project Dashboard</title>
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <style>
+body {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+}
+h1 {
+    color: white;
+    align-content: center;
+    text-align: center;
+}
+
+form{
+    position: absolute;
+    top: 4%;
+    left: 70%;
+    transform: translate(-50%,-50%);
+    transition: all 1s;
+    width: 50px;
+    height: 50px;
+    background: white;
+    box-sizing: border-box;
+    border-radius: 25px;
+    border: 4px solid white;
+    padding: 3px;
+}
+
+
+
+
+form:hover,
+form:valid{
+    width: 200px;
+    cursor: pointer;
+}
+
+form:hover input,
+form:valid input{
+    display: block;
+}
+
+form:hover .fa,
+form:valid .fa{
+    background: #07051a;
+    color: white;
+}
+
+.clear {
+  display: none;
+  position: absolute;
+  top: 50px;
+  bottom:0;
+  left: 0;
+  right: 0;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  width: 100%;
+}
+
+form:valid a {
+  display: block;
+}
+
+table {
+border: 3px solid white;
+border-collapse: collapse;
+}
+td:nth-child(-n+19){
+  border: 1px solid black;
+  border-collapse: collapse;
+  background:#f7b7f1;
+  text-align: center;
+
+}
+th:nth-child(-n+19){
+  border: 1px solid black;
+  border-collapse: collapse;
+  background:#8212b3;
+  text-align: center;
+  color: white;
+}
+td:nth-child(-n+11){
+  border: 1px solid black;
+  border-collapse: collapse;
+  background:#b7f7f4;
+  text-align: center;
+}
+th:nth-child(-n+11){
+  border: 1px solid black;
+  border-collapse: collapse;
+  background:#08c2bb;
+  text-align: center;
+  color: black;
+}
+td:nth-child(-n+6){
+  border: 1px solid black;
+  border-collapse: collapse;
+  background:#f7f3b7;
+  text-align: center;
+}
+th:nth-child(-n+6){
+  border: 1px solid black;
+  border-collapse: collapse;
+  background:#ebc934;
+  text-align: center;
+  color:black;
+}
+td:nth-child(-n+4){
+  border: 1px solid black;
+  border-collapse: collapse;
+  background:#f7f3b7;
+  text-align: center;
+}
+th:nth-child(-n+4){
+  border: 1px solid black;
+  border-collapse: collapse;
+  background:#ebc934;
+  text-align: center;
+  color: black;
+}
+td:nth-child(1){
+  border: 1px solid black;
+  border-collapse: collapse;
+  background:#f7b7f1;
+  text-align: center;
+}
+th:nth-child(1){
+  border: 1px solid black;
+  border-collapse: collapse;
+  background:#8212b3;
+  text-align: center;
+  color:white;
+}
+.Errormessage{
+	text-align: center;
+}
+#home{
+	color:white;
+	box-sizing: border-box;
+    padding: 10px;
+    width: 72.5px;
+    height: 72.5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+    color: white;
+    text-align: center;
+    font-size: 2.2em;
+    transition: all 1s;
+}
+.search-container{
+    background: #fff;
+    height: 30px;
+    border-radius: 30px;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.8s;
+    /*box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+    inset -7px -7px 10px 0px rgba(0,0,0,.1),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+   text-shadow:  0px 0px 6px rgba(255,255,255,.3),
+              -4px -4px 6px rgba(116, 125, 136, .2);
+  text-shadow: 2px 2px 3px rgba(255,255,255,0.5);*/
+  box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
+              -4px -4px 6px 0 rgba(116, 125, 136, .2),
+    inset -4px -4px 6px 0 rgba(255,255,255,.2),
+    inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+}
+
+.search-container:hover > .search-input{
+    width: 400px;
+}
+
+.search-container .search-input{
+    background: transparent;
+    border: none;
+    outline:none;
+    width: 0px;
+    font-weight: 500;
+    font-size: 16px;
+    transition: 0.8s;
+
+}
+
+.search-container .search-btn .fas{
+    color: #5cbdbb;
+}
+
+@keyframes hoverShake {
+  0% {transform: skew(0deg,0deg);}
+  25% {transform: skew(5deg, 5deg);}
+  75% {transform: skew(-5deg, -5deg);}
+  100% {transform: skew(0deg,0deg);}
+}
+
+.search-container:hover{
+  animation: hoverShake 0.15s linear 3;
+}
+</style>
+
+</head>
+<body>
+<h1>Search with Hshd_num</i></h1>
+
+<a id="home" class="fa fa-home" aria-hidden="true" href="{{url_for('home')}}"></a>
+<div><a style='color:white' href="{{url_for('loginPage')}}">Sign Off</a></div>
+<div class="Errormessage"><FONT COLOR="#FF0000">{{ message }}</FONT></div><br/>
+<form action="{{url_for('queryhhm')}}" method="POST">
+    <div class="search-container">
+        <input type="search" name="hshd_num" placeholder="search Hshd_num" class="search-input" required>
+        <a href="#" class="search-btn">
+            <i class="fas fa-search"></i>
+        </a>
+    </div>
+    <a class="clear" href="javascript:void(0)" id="clear-btn">Clear</a>
+</form>
+</br>
+
+<div id="CustomerTable">
+    <table>
+        <tr>
+            <th>  Hshd_
+                num</th>
+            <th>Basket_
+                num</th>
+            <th>Date</th>
+            <th>Product_
+                num</th>
+            <th>Department</th>
+            <th>Commodity</th>
+            <th>Spend</th>
+            <th>Units</th>
+            <th>Store_
+                region</th>
+            <th>Week_num</th>
+            <th>Year</th>
+            <th>Loyalty_
+                flag</th>
+            <th>Age_range</th>
+            <th>Marital_
+                status</th>
+            <th>Income_
+                range</th>
+            <th>Homeowner_
+                desc</th>
+            <th>Hshd_
+                Composition</th>
+            <th>Hshd_
+                Size</th>
+            <th>Children</th>
+        </tr>
+        {% for row in data %}
+        <tr>
+            {% for cell in row %}
+            <td>{{ cell }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+
+
+    <script type="text/javascript">
+const clearInput = () => {
+  const input = document.getElementsByTagName("input")[0];
+  input.value = "";
+}
+const clearBtn = document.getElementById("clear-btn");
+clearBtn.addEventListener("click", clearInput);
+</script>
+
+</body>
+</html>
